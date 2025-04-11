@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -23,6 +24,7 @@
     "postcss": "^8.5.3",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.5.3",
+    "sass": "^1.86.3",
     "stylelint": "^16.18.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^38.0.0",

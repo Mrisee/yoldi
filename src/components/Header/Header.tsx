@@ -1,7 +1,38 @@
-import React from 'react'
+'use client'
 
-export default function Header() {
+import React from 'react'
+import Image from 'next/image'
+import Logo from '@/assets/images/Logo.svg'
+import { Button, SIZE, VARIANT } from '../UI/Button'
+import styles from './styles.module.scss'
+import { useAuthStore } from '@/stores/auth'
+import Link from 'next/link'
+import { Avatar } from '../Avatar'
+
+export const Header = () => {
+  const currentUser = useAuthStore((state) => state.currentUser)
+  const token = useAuthStore((state) => state.token)
+
   return (
-    <div>Header</div>
+    <header className={styles.header}>
+      <Link href='/' className={styles.info}>
+        <Image src={Logo} alt='' />
+        <p className={styles.text}>
+          Разрабатываем и запускаем <br /> сложные веб проекты
+        </p>
+      </Link>
+      <div>
+        {token ? (
+          <Link href={`/${currentUser?.slug}`} className={styles.profile}>
+            <div>{currentUser?.name}</div>
+            <Avatar img={currentUser?.image} name={currentUser?.name} />
+          </Link>
+        ) : (
+          <Button size={SIZE.SMALL} variant={VARIANT.SECONDARY}>
+            Войти
+          </Button>
+        )}
+      </div>
+    </header>
   )
 }

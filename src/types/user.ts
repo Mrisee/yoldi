@@ -1,4 +1,4 @@
-export interface Image {
+export interface IImage {
   id: string
   url: string
   width: string
@@ -10,6 +10,6 @@ export interface User {
   email: string
   slug: string
   description: string
-  image: Image
-  cover: Image
+  image: IImage
+  cover: IImage
 }

@@ -1,0 +1,19 @@
+:root {
+  /* colors */
+  --background-primary: #fff;
+  --background-secondary: #f3f3f3;
+  --strokes-primary: #d4d4d4;
+  --strokes-secondary: #e6e6e6;
+  --txt-color: #000;
+  --borders-color: #838383;
+  --error-color: #f00000;
+
+  /* sizes */
+  --header-height: 80px;
+}
+
+@mixin media-mobile {
+  @media (width <= 720px) {
+    @content;
+  }
+}

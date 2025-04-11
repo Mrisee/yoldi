@@ -1,0 +1,77 @@
+@import '@/assets/core/variables';
+
+.btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: max-content;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.full {
+  width: 100%;
+}
+
+.medium {
+  padding: 12px 32px;
+  line-height: 26px;
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.small {
+  padding: 6px 32px;
+  line-height: 26px;
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.primary {
+  color: var(--background-primary);
+  background: var(--txt-color);
+
+  &[disabled] {
+    color: var(--background-secondary);
+    background: var(--strokes-primary);
+  }
+}
+
+.secondary {
+  color: var(--txt-color);
+  background: var(--background-primary);
+  border: 1px solid var(--strokes-primary);
+
+  &:hover {
+    border: 1px solid var(--borders-color);
+  }
+
+  &:focus {
+    border: 1px solid var(--borders-color);
+  }
+
+  &[disabled] {
+    color: var(--background-secondary);
+    background: var(--strokes-primary);
+  }
+}
+
+.text {
+  padding: 0;
+  background: transparent;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}

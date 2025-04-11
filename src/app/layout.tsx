@@ -1,15 +1,43 @@
-import Header from '@/components/Header/Header'
+import { headers } from 'next/headers'
+import { api } from '@/lib/api'
+import { User } from '@/types/user'
 import { ReactNode } from 'react'
-import '@/assets/core/globals.css'
+import { Header } from '@/components/Header'
+import '@/assets/core/globals.scss'
+import '@/assets/core/variables.scss'
+import { AuthProvider } from '@/context/AuthContext'
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
+  const headerList = headers()
+  const token = (await headerList).get('X-API-KEY')
+
+  let currentUser: User | null = null
+
+  if (token) {
+    try {
+      currentUser = await api<User>('/api/profile', {
+        headers: {
+          'X-API-KEY': token,
+        },
+      })
+    } catch (err) {
+      console.error('Ошибка получения профиля на сервере:', err)
+    }
+  }
+
   return (
-    <html>
+    <html lang='ru'>
       <body>
-        <div>
-          <Header></Header>
-          <main>{children}</main>
-        </div>
+        <AuthProvider initialUser={currentUser} initialToken={token}>
+          <div className='layout'>
+            <Header />
+            <main>{children}</main>
+          </div>
+        </AuthProvider>
       </body>
     </html>
   )

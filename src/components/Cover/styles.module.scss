@@ -1,0 +1,23 @@
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  background: var(--background-secondary);
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid var(--strokes-secondary);
+  transition: 200ms all linear;
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+}
+
+.button {
+  opacity: 0;
+  transition: 200ms opacity linear;
+}

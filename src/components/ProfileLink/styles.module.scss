@@ -1,0 +1,22 @@
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid var(--strokes-secondary);
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: 1px solid var(--strokes-secondary);
+  }
+}
+
+.info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.mail {
+  color: var(--borders-color);
+}

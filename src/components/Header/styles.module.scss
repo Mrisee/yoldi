@@ -1,0 +1,33 @@
+@import '../../assets/core/variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 15px 29.5px 15px 20px;
+  border-bottom: 1px solid var(--strokes-secondary);
+}
+
+.info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+
+  @include media-mobile {
+    display: none;
+  }
+}
+
+.profile {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+}

@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'frontend-test-api.yoldi.agency',
+        port: '',
+        pathname: '/api/image/src/**',
+        search: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

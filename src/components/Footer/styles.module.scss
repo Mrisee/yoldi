@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 23px 0;
+  color: var(--borders-color);
+  font-size: 14px;
+  background: var(--background-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.text {
+  font-size: 16px;
+}
