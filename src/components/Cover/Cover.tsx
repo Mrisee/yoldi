@@ -5,18 +5,25 @@ import { IImage } from '@/types/user'
 
 interface ICoverProps {
   cover?: IImage
-  isOwnProfile: boolean
+  isOwnProfile?: boolean
+  onUpload?: () => void
 }
 
-export const Cover: React.FC<ICoverProps> = ({ cover, isOwnProfile }) => {
+export const Cover: React.FC<ICoverProps> = ({
+  cover,
+  isOwnProfile,
+  onUpload,
+}) => {
   const coverUrl = cover ? `url(${cover.url})` : ''
+
   return (
     <div className={styles.cover} style={{ backgroundImage: coverUrl || '' }}>
-      {isOwnProfile && (
+      {isOwnProfile && onUpload && (
         <Button
           className={styles.button}
           variant={VARIANT.SECONDARY}
           size={SIZE.SMALL}
+          onClick={onUpload}
         >
           Загрузить
         </Button>

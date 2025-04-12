@@ -8,22 +8,27 @@ export const Avatar: React.FC<IAvatarProps> = ({
   img,
   name,
   variant = AVARIANT.NAVIGATION,
+  onUpload,
 }) => {
   const classNames = [styles[variant], styles.avatar]
 
-  return (
-    <>
-      {img && img.url !== 'unknown' ? (
-        <Image
-          className={filterStyles(classNames)}
-          src={`${img.url}`}
-          alt='avatar'
-          width={Number(img.width)}
-          height={Number(img.width)}
-        />
-      ) : (
-        <div className={filterStyles(classNames)}>{name?.slice(0, 1)}</div>
-      )}
-    </>
+  const handleClick = () => {
+    if (onUpload) onUpload()
+  }
+
+  return img && img.url !== 'unknown' ? (
+    <Image
+      className={filterStyles(classNames)}
+      src={img.url}
+      alt='avatar'
+      width={Number(img.width)}
+      height={Number(img.width)}
+      onClick={handleClick}
+      style={{ cursor: onUpload ? 'pointer' : 'default' }}
+    />
+  ) : (
+    <div className={filterStyles(classNames)} onClick={handleClick}>
+      {name?.slice(0, 1)}
+    </div>
   )
 }

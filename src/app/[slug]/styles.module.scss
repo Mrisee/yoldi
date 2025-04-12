@@ -1,3 +1,5 @@
+@import '../../assets/core/variables';
+
 .wrapper {
   flex-grow: 1;
   background: var(--background-primary);
@@ -14,6 +16,10 @@
   display: flex;
   justify-content: space-between;
   margin: 35px 0 30px;
+
+  @include media-mobile {
+    flex-direction: column;
+  }
 }
 
 .info {
@@ -37,10 +43,15 @@
   font-size: 16px;
   line-height: 160%;
   text-overflow: ellipsis;
+
+  @include media-mobile {
+    margin-bottom: 10px;
+  }
 }
 
 .description {
   max-width: 600px;
+  margin-bottom: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

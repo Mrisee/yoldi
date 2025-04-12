@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { User } from '@/types/user'
+import { User, UserUpdate } from '@/types/user'
 import { api } from '@/lib/api'
 
 interface AuthState {
@@ -12,6 +12,7 @@ interface AuthState {
   fetchProfile: (token: string) => Promise<void>
   login: (email: string, password: string) => Promise<void>
   signup: (email: string, name: string, password: string) => Promise<void>
+  updateProfile: (updatedFields: Partial<UserUpdate>, token: string) => void
   logout: () => void
 }
 
@@ -85,6 +86,24 @@ export const useAuthStore = create<AuthState>((set) => ({
 			throw new Error(errorMessage)
 		}
 	},
+
+  updateProfile: async (updatedFields: Partial<UserUpdate>, token) => {
+    set({ isLoading: true, error: null })
+    try {
+      const updatedUser = await api<User>('/api/profile', {
+        method: 'PATCH',
+        body: JSON.stringify(updatedFields),
+        headers: {
+          'X-API-KEY': token,
+        },
+      })
+      set({ currentUser: updatedUser, isLoading: false })
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : 'Ошибка обновления профиля'
+      set({ error: errorMessage, isLoading: false })
+    }
+  },
 
   logout: () => {
     set({ currentUser: null, token: null })

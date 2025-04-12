@@ -1,3 +1,5 @@
+@import '../../assets/core/variables';
+
 .modal {
   position: fixed;
   inset: 0;
@@ -8,7 +10,36 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
   padding: 30px;
   background: var(--background-primary);
   border-radius: 5px;
+
+  @include media-mobile {
+    max-width: unset;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+.title {
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 142%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
 }

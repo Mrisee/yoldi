@@ -9,4 +9,5 @@ export interface IAvatarProps {
   img?: IImage | null
   name?: string
   variant?: AVARIANT
+  onUpload?: () => void
 }

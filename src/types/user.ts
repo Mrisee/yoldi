@@ -13,3 +13,12 @@ export interface User {
   image: IImage
   cover: IImage
 }
+
+export interface UserUpdate {
+  name: string
+  email: string
+  slug: string
+  description: string
+  imageId: string
+  coverId: string
+}
