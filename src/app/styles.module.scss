@@ -5,14 +5,22 @@
 
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .profiles {
   margin: 50px 0;
 }
 
+.list {
+  border-bottom: 1px solid var(--strokes-secondary);
+}
+
 .heading {
   margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 140%;
 }

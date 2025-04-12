@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './styles.module.scss'
 import Image from 'next/image'
 import { filterStyles } from '@/lib/filterStyles'
 import { AVARIANT, IAvatarProps } from './Avatar.types'
+import styles from './styles.module.scss'
 
 export const Avatar: React.FC<IAvatarProps> = ({
   img,

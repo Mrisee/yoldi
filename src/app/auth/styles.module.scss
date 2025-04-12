@@ -11,39 +11,29 @@
   flex-direction: column;
   width: 100%;
   max-width: 400px;
-  padding: 30px;
+  padding: 29px;
   background-color: var(--background-primary);
   border: 1px solid var(--strokes-secondary);
   border-radius: 5px;
 }
 
 .title {
-  margin-bottom: 24px;
+  margin-bottom: 25px;
   font-weight: 500;
   font-size: 30px;
+  line-height: 140%;
 }
 
-.input {
-  margin-bottom: 16px;
-  padding: 10px 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 0 5px;
 }
 
 .passwordWrapper {
   position: relative;
-}
-
-.togglePassword {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  font-size: 14px;
-  background: none;
-  border: none;
-  transform: translateY(-50%);
-  cursor: pointer;
 }
 
 .error {

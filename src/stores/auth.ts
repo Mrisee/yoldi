@@ -47,42 +47,44 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   login: async (email, password) => {
-    set({ isLoading: true, error: null })
-    try {
-      const response = await api<{ value: string }>('/api/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-      })
-
-      document.cookie = `auth=${response.value}`
-      set({ token: response.value })
-
-      const profile = await fetchProfileData(response.value)
-      set({ currentUser: profile, isLoading: false })
-    } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Ошибка входа'
-      set({ error: errorMessage, isLoading: false })
-    }
-  },
+		set({ isLoading: true, error: null })
+		try {
+			const response = await api<{ value: string }>('/api/auth/login', {
+				method: 'POST',
+				body: JSON.stringify({ email, password }),
+			})
+	
+			document.cookie = `auth=${response.value}`
+			set({ token: response.value })
+	
+			const profile = await fetchProfileData(response.value)
+			set({ currentUser: profile, isLoading: false })
+		} catch (err: unknown) {
+			const errorMessage = err instanceof Error ? err.message : 'Ошибка входа'
+			set({ error: errorMessage, isLoading: false })
+			throw new Error(errorMessage)
+		}
+	},
 
   signup: async (email, name, password) => {
-    set({ isLoading: true, error: null })
-    try {
-      const response = await api<{ value: string }>('/api/auth/sign-up', {
-        method: 'POST',
-        body: JSON.stringify({ email, name, password }),
-      })
-
-      document.cookie = `auth=${response.value}`
-      set({ token: response.value })
-
-      const profile = await fetchProfileData(response.value)
-      set({ currentUser: profile, isLoading: false })
-    } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Ошибка регистрации'
-      set({ error: errorMessage, isLoading: false })
-    }
-  },
+		set({ isLoading: true, error: null })
+		try {
+			const response = await api<{ value: string }>('/api/auth/sign-up', {
+				method: 'POST',
+				body: JSON.stringify({ email, name, password }),
+			})
+	
+			document.cookie = `auth=${response.value}`
+			set({ token: response.value })
+	
+			const profile = await fetchProfileData(response.value)
+			set({ currentUser: profile, isLoading: false })
+		} catch (err: unknown) {
+			const errorMessage = err instanceof Error ? err.message : 'Ошибка регистрации'
+			set({ error: errorMessage, isLoading: false })
+			throw new Error(errorMessage)
+		}
+	},
 
   logout: () => {
     set({ currentUser: null, token: null })

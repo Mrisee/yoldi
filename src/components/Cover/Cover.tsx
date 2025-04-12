@@ -4,20 +4,23 @@ import { Button, SIZE, VARIANT } from '../UI/Button'
 import { IImage } from '@/types/user'
 
 interface ICoverProps {
-  cover: IImage
+  cover?: IImage
+  isOwnProfile: boolean
 }
 
-export const Cover: React.FC<ICoverProps> = ({ cover }) => {
+export const Cover: React.FC<ICoverProps> = ({ cover, isOwnProfile }) => {
   const coverUrl = cover ? `url(${cover.url})` : ''
   return (
     <div className={styles.cover} style={{ backgroundImage: coverUrl || '' }}>
-      <Button
-        className={styles.button}
-        variant={VARIANT.SECONDARY}
-        size={SIZE.SMALL}
-      >
-        Загрузить
-      </Button>
+      {isOwnProfile && (
+        <Button
+          className={styles.button}
+          variant={VARIANT.SECONDARY}
+          size={SIZE.SMALL}
+        >
+          Загрузить
+        </Button>
+      )}
     </div>
   )
 }

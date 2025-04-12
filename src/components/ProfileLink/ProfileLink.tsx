@@ -19,13 +19,11 @@ export const ProfileLink: React.FC<IProfileLink> = ({
 }) => {
   return (
     <Link href={slug} className={styles.profile}>
-      <div>
-        <div className={styles.info}>
-          <Avatar img={img} name={name} />
-          <div>{name}</div>
-        </div>
+      <Avatar img={img} name={name} />
+      <div className={styles.info}>
+        <div className={styles.name}>{name}</div>
+        <div className={styles.mail}>{mail}</div>
       </div>
-      <div className={styles.mail}>{mail}</div>
     </Link>
   )
 }

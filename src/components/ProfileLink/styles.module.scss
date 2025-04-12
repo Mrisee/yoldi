@@ -1,22 +1,46 @@
+@import '../../assets/core/variables';
+
 .profile {
   display: flex;
+  gap: 20px;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 0;
   border-top: 1px solid var(--strokes-secondary);
   cursor: pointer;
-
-  &:last-child {
-    border-bottom: 1px solid var(--strokes-secondary);
-  }
 }
 
 .info {
   display: flex;
-  gap: 20px;
+  flex-grow: 1;
   align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @include media-mobile {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.name {
+  overflow: hidden;
+  line-height: 160%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @include media-mobile {
+    max-width: 100%;
+  }
 }
 
 .mail {
   color: var(--borders-color);
+  line-height: 160%;
+
+  @include media-mobile {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }

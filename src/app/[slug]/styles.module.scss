@@ -5,30 +5,42 @@
 
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-.info {
+.about {
   display: flex;
   justify-content: space-between;
   margin: 35px 0 30px;
 }
 
+.info {
+  overflow: hidden;
+}
+
 .name {
   margin-bottom: 10px;
+  overflow: hidden;
   font-weight: 500;
   font-size: 30px;
   line-height: 140%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mail {
+  overflow: hidden;
   color: var(--borders-color);
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
+  text-overflow: ellipsis;
 }
 
 .description {
   max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

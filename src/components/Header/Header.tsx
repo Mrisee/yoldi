@@ -8,8 +8,11 @@ import styles from './styles.module.scss'
 import { useAuthStore } from '@/stores/auth'
 import Link from 'next/link'
 import { Avatar } from '../Avatar'
+import { useRouter } from 'next/navigation'
 
 export const Header = () => {
+  const router = useRouter()
+
   const currentUser = useAuthStore((state) => state.currentUser)
   const token = useAuthStore((state) => state.token)
 
@@ -28,7 +31,13 @@ export const Header = () => {
             <Avatar img={currentUser?.image} name={currentUser?.name} />
           </Link>
         ) : (
-          <Button size={SIZE.SMALL} variant={VARIANT.SECONDARY}>
+          <Button
+            size={SIZE.SMALL}
+            variant={VARIANT.SECONDARY}
+            onClick={() => {
+              router.push('/auth')
+            }}
+          >
             Войти
           </Button>
         )}

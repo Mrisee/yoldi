@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 20px;
+  border: 1px solid var(--strokes-primary);
+  border-radius: 4px;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border: 1px solid var(--borders-color);
+  }
+}
+
+.input {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  background-color: transparent !important;
+  border: none;
+  outline: none;
+}
+
+.error {
+  border: 1px solid var(--error-color);
+}
+
+.disabled {
+  background: var(--background-secondary);
+  pointer-events: none;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+.showPassword {
+  position: absolute;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.shown {
+  opacity: 1;
+}
