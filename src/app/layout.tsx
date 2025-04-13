@@ -3,8 +3,7 @@ import { api } from '@/lib/api'
 import { User } from '@/types/user'
 import { ReactNode } from 'react'
 import { Header } from '@/components/Header'
-import '@/assets/core/globals.scss'
-import '@/assets/core/variables.scss'
+import '@/assets/core/globals.css'
 import { AuthProvider } from '@/context/AuthContext'
 
 export default async function RootLayout({
