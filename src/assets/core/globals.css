@@ -33,7 +33,12 @@ body {
   font-family: Inter, sans-serif;
 }
 
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
   color: inherit;
   text-decoration: none;
 }
@@ -42,6 +47,7 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  margin-top: var(--header-height);
   background: var(--background-secondary);
 }
 

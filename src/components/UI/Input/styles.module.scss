@@ -62,6 +62,7 @@
 .slugWrapper {
   display: flex;
   padding: 0;
+  overflow: hidden;
   border: 1px solid var(--strokes-primary);
   border-radius: 5px;
 }

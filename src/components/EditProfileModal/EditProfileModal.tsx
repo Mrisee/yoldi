@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { User } from '@/types/user'
 import { Input, Textarea } from '../UI/Input'
@@ -39,6 +39,15 @@ export const EditProfileModal: React.FC<IEditProfileModal> = ({
     router.push(`/${data.slug}`)
     onClose()
   }
+
+  useEffect(() => {
+    const originalOverflow = document.documentElement.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.documentElement.style.overflow = originalOverflow
+    }
+  }, [])
 
   return (
     <div className={styles.modal}>
