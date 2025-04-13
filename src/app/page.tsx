@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from 'react'
 import { useUsersStore } from '@/stores/users'
 import styles from './styles.module.scss'
 import { ProfileLink } from '@/components/ProfileLink'
+import { Loader } from '@/components/UI/Loader'
 
 export default function UsersPage() {
   const {
@@ -46,6 +47,7 @@ export default function UsersPage() {
       <div className={styles.container}>
         <div className={styles.profiles}>
           <h1 className={styles.heading}>Список аккаунтов</h1>
+
           <ul className={styles.list}>
             {paginatedUsers.map((user, index) => {
               const isLast = index === paginatedUsers.length - 1
@@ -61,7 +63,7 @@ export default function UsersPage() {
               )
             })}
           </ul>
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
         </div>
       </div>
     </div>

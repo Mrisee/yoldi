@@ -14,7 +14,7 @@ interface UsersState {
   hasMore: boolean
   fetchUsers: () => Promise<void>
   loadMoreUsers: () => void
-  fetchUserBySlug: (slug: string) => Promise<void>
+  fetchUserBySlug: (slug: string, isUpdate?: boolean) => Promise<void>
 }
 
 export const useUsersStore = create<UsersState>((set, get) => ({
@@ -59,8 +59,8 @@ export const useUsersStore = create<UsersState>((set, get) => ({
     })
   },
 
-  fetchUserBySlug: async (slug: string) => {
-    set({ isLoading: true, selectedUser: null, error: null })
+  fetchUserBySlug: async (slug: string, isUpdate: boolean = false) => {
+    set({ isLoading: !isUpdate, selectedUser: null, error: null })
     try {
       const user = await api<User>(`/api/user/${slug}`)
       set({ selectedUser: user, isLoading: false })

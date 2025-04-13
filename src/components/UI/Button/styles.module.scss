@@ -2,7 +2,7 @@
 
 .btn {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   width: max-content;
@@ -36,6 +36,11 @@
     width: 25px;
     height: 25px;
   }
+}
+
+.withIcon {
+  padding: 6px 22px;
+  line-height: 26px;
 }
 
 .primary {

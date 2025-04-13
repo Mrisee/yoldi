@@ -3,6 +3,7 @@ import React from 'react'
 export enum SIZE {
   SMALL = 'small',
   MEDIUM = 'medium',
+  WITH_ICON='withIcon'
 }
 
 export enum VARIANT {
@@ -13,7 +14,7 @@ export enum VARIANT {
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: SIZE.SMALL | SIZE.MEDIUM
+  size?: SIZE.SMALL | SIZE.MEDIUM | SIZE.WITH_ICON
   variant?: VARIANT
   children?: React.ReactNode
   startIcon?: React.ReactNode

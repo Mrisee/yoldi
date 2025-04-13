@@ -11,7 +11,7 @@ export interface User {
   slug: string
   description: string
   image: IImage
-  cover: IImage
+  cover: IImage | null
 }
 
 export interface UserUpdate {
@@ -20,5 +20,5 @@ export interface UserUpdate {
   slug: string
   description: string
   imageId: string
-  coverId: string
+  coverId: string | null
 }

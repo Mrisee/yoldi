@@ -16,6 +16,7 @@ import { selectImageFile } from '@/lib/selectImageFile'
 import { uploadImage } from '@/lib/uploadImage'
 
 import styles from './styles.module.scss'
+import { Pen, SignOut } from '@/assets/icons'
 
 export default function UserProfilePage() {
   const router = useRouter()
@@ -25,6 +26,7 @@ export default function UserProfilePage() {
   const token = useAuthStore((state) => state.token)
   const updateProfile = useAuthStore.getState().updateProfile
   const { selectedUser, fetchUserBySlug, error, isLoading } = useUsersStore()
+
   const logout = useAuthStore((state) => state.logout)
 
   const handleAvatarUpload = async () => {
@@ -33,16 +35,41 @@ export default function UserProfilePage() {
 
     const image = await uploadImage(file)
     updateProfile({ imageId: image.id, ...selectedUser }, token!)
-    fetchUserBySlug(slug as string)
+    if (selectedUser)
+      useUsersStore.setState({
+        selectedUser: {
+          ...selectedUser,
+          image: image,
+        },
+      })
   }
 
   const handleCoverUpload = async () => {
     const file = await selectImageFile()
-    if (!file) return
+    if (!file || !token) return
 
     const image = await uploadImage(file)
-    updateProfile({ coverId: image.id, ...selectedUser }, token!)
-    fetchUserBySlug(slug as string)
+    updateProfile({ coverId: image.id, ...selectedUser }, token)
+    if (selectedUser)
+      useUsersStore.setState({
+        selectedUser: {
+          ...selectedUser,
+          cover: image,
+        },
+      })
+  }
+
+  const handleCoverRemove = async () => {
+    if (!token) return
+
+    updateProfile({ coverId: null, ...selectedUser }, token)
+    if (selectedUser)
+      useUsersStore.setState({
+        selectedUser: {
+          ...selectedUser,
+          cover: null,
+        },
+      })
   }
 
   useEffect(() => {
@@ -61,6 +88,8 @@ export default function UserProfilePage() {
         isOwnProfile={isOwnProfile}
         cover={selectedUser?.cover}
         onUpload={handleCoverUpload}
+        onRemove={handleCoverRemove}
+        isLoading={isLoading}
       />
       <div className={styles.container}>
         <Avatar
@@ -81,8 +110,9 @@ export default function UserProfilePage() {
               {isOwnProfile && (
                 <Button
                   variant={VARIANT.SECONDARY}
-                  size={SIZE.SMALL}
+                  size={SIZE.WITH_ICON}
                   onClick={() => setIsEditOpen(true)}
+                  startIcon={<Pen />}
                 >
                   Редактировать
                 </Button>
@@ -95,11 +125,12 @@ export default function UserProfilePage() {
             {isOwnProfile && (
               <Button
                 variant={VARIANT.SECONDARY}
-                size={SIZE.SMALL}
+                size={SIZE.WITH_ICON}
                 onClick={() => {
                   logout()
                   router.push('/')
                 }}
+                startIcon={<SignOut />}
               >
                 Выйти
               </Button>

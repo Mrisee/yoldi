@@ -1,5 +1,8 @@
+@import '../../assets/core/variables';
+
 .container {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
@@ -15,6 +18,13 @@
   background-color: var(--background-primary);
   border: 1px solid var(--strokes-secondary);
   border-radius: 5px;
+
+  @include media-mobile {
+    flex-grow: 1;
+    max-width: 100%;
+    border: none;
+    border-radius: none;
+  }
 }
 
 .title {

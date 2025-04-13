@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { User } from '@/types/user'
-import { Input } from '../UI/Input'
+import { Input, Textarea } from '../UI/Input'
 import { Button, VARIANT } from '../UI/Button'
 import { SlugInput } from '../UI/Input/SlugInput'
 import { useForm } from 'react-hook-form'
@@ -55,7 +55,7 @@ export const EditProfileModal: React.FC<IEditProfileModal> = ({
             {...register('slug', { required: true })}
             error={errors.slug?.message}
           />
-          <Input
+          <Textarea
             label='Описание'
             {...register('description')}
             error={errors.description?.message}
