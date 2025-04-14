@@ -72,7 +72,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 		try {
 			const response = await api<{ value: string }>('/api/auth/sign-up', {
 				method: 'POST',
-				body: JSON.stringify({ email, name, password }),
+				body: JSON.stringify({ name, email, password }),
 			})
 	
 			document.cookie = `auth=${response.value}`
