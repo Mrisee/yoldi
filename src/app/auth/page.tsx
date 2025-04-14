@@ -34,7 +34,7 @@ export default function AuthPage() {
 
     try {
       if (mode === 'signup') {
-        await signup(data.name!, data.email, data.password)
+        await signup(data.email, data.password, data.name)
       } else {
         await login(data.email, data.password)
       }

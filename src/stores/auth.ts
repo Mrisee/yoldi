@@ -11,7 +11,7 @@ interface AuthState {
   setToken: (token: string) => void
   fetchProfile: (token: string) => Promise<void>
   login: (email: string, password: string) => Promise<void>
-  signup: (email: string, name: string, password: string) => Promise<void>
+  signup: (email: string, password: string, name?: string) => Promise<void>
   updateProfile: (updatedFields: Partial<UserUpdate>, token: string) => void
   logout: () => void
 }
@@ -67,7 +67,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 		}
 	},
 
-  signup: async (email, name, password) => {
+  signup: async (email, password, name) => {
 		set({ isLoading: true, error: null })
 		try {
 			const response = await api<{ value: string }>('/api/auth/sign-up', {
